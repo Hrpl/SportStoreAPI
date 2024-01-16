@@ -68,3 +68,8 @@ C:\Users\Денис\Desktop\API SportStore\API\API\obj\Debug\net8.0\refint\API.d
 C:\Users\Денис\Desktop\API SportStore\API\API\obj\Debug\net8.0\API.pdb
 C:\Users\Денис\Desktop\API SportStore\API\API\obj\Debug\net8.0\API.genruntimeconfig.cache
 C:\Users\Денис\Desktop\API SportStore\API\API\obj\Debug\net8.0\ref\API.dll
+C:\Users\Денис\Desktop\API SportStore\API\API\obj\Debug\net8.0\API.sourcelink.json
+C:\Users\Денис\Desktop\API SportStore\API\API\bin\Debug\net8.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\Денис\Desktop\API SportStore\API\API\bin\Debug\net8.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+C:\Users\Денис\Desktop\API SportStore\API\API\bin\Debug\net8.0\Newtonsoft.Json.dll
+C:\Users\Денис\Desktop\API SportStore\API\API\bin\Debug\net8.0\Newtonsoft.Json.Bson.dll

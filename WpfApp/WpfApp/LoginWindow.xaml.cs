@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WpfApp.Infrastructure;
 
 namespace WpfApp
 {
@@ -20,21 +21,53 @@ namespace WpfApp
     /// </summary>
     public partial class LoginWindow : Window
     {
+        bool verify = true;
+        int verifyCheck = 0;
+
         public LoginWindow()
         {
             InitializeComponent();
+
+            captchaBlock.Visibility = Visibility.Collapsed;
+            captchaBox.Visibility = Visibility.Collapsed;
+
         }
 
         private async void loginButton_Click(object sender, RoutedEventArgs e)
         {
             var us = await Requests.Autorization(loginBox.Text.ToString(), passwordBox.Text.ToString());
 
-            if (us.RA == "t")
+            if (us.RA == "t" && verify)
             {
                 new MainWindow().Show();
                 this.Close();
             }
-            else if (us.RA == "f") MessageBox.Show("Неуспешная авторизация");
+            else
+            {
+                MessageBox.Show("Неуспешная авторизация");
+                verifyCheck += 1;
+
+                // captcha view
+                captchaBox.Visibility = Visibility.Visible;
+                captchaBlock.Visibility = Visibility.Visible;
+                captchaBlock.Text = CaptchaBuilder.Refresh();
+                verify = false;
+
+                if (verifyCheck > 1)
+                {
+                    disableButton();
+                    captchaBlock.Text = CaptchaBuilder.Refresh();
+                }
+            }
+        }
+        /// <summary>
+        /// Асинхронное выключение кнопки на 10 сек.
+        /// </summary>
+        async void disableButton()
+        {
+            loginButton.IsEnabled = false;
+            await Task.Delay(TimeSpan.FromSeconds(10));
+            loginButton.IsEnabled = true;
         }
     }
 }

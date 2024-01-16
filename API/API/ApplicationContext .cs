@@ -7,7 +7,7 @@ using System.Configuration;
 
 namespace API
 {
-    public class ApplicationContext : DbContext
+    public partial class ApplicationContext : DbContext
     {
         public ApplicationContext(DbContextOptions<ApplicationContext> options)
             : base(options){ }
@@ -105,8 +105,8 @@ namespace API
                     .HasConstraintName("FK__User__Role__267ABA7A");
             });
 
-            //OnModelCreatingPartial(modelBuilder);
+            OnModelCreatingPartial(modelBuilder);
         }
-        
+        partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
     }
 }
